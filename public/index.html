@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>XML Attribute Parser</title>
+  </head>
+  <body>
+    <h1>XML Attribute Parser</h1>
+    <div>
+      <form>
+        <input type="file" name="sourcefile" id="sourcefile" />
+        <button type="button" id="submitBtn">Submit</button>
+      </form>
+    </div>
+    <br />
+    <div style="max-width:80vw">
+      <textarea style="width:100%" rows="30" id="parseResult"> </textarea>
+    </div>
+  </body>
+  <script>
+    function submitForm() {
+      console.log("Hello");
+      const sourcefile = document.querySelector("#sourcefile");
+      const f = sourcefile.files[0];
+
+      let form_data = new FormData();
+      form_data.append("sourcefile", f);
+
+      axios
+        .post("/parse", form_data, {
+          headers: {
+            "Content-Type": "multipart/form-data"
+          }
+        })
+        .then(function(response) {
+          console.log(response.data.result);
+          let result = "";
+          response.data.result.forEach(i => {
+            result += i;
+            result += "\n";
+          });
+          document.querySelector("#parseResult").innerHTML = result;
+        })
+        .catch(function(error) {
+          console.log(error);
+        })
+        .finally(function() {
+          // always executed
+        });
+    }
+
+    document.querySelector("#submitBtn").addEventListener("click", submitForm);
+  </script>
+</html>
