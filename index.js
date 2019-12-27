@@ -1,3 +1,4 @@
+const path = require("path");
 const express = require("express");
 const helmet = require("helmet");
 const multer = require("multer");
@@ -17,7 +18,7 @@ app.post("/parse", upload.single("sourcefile"), async function(req, res, next) {
   console.log(req.file);
   let result = "";
   try {
-    result = await parser.parseXml(req.file.path);
+    result = await parser.parseXml(__dirname + path.sep + req.file.path);
   } catch (err) {
     next(err);
   } finally {
@@ -26,7 +27,7 @@ app.post("/parse", upload.single("sourcefile"), async function(req, res, next) {
       console.log("File was deleted");
     });
   }
-  res.send(result);
+  res.send({ result: result });
 });
 
 const server = app.listen(port, () =>

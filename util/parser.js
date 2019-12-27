@@ -1,47 +1,48 @@
-const path = require("path");
 const fs = require("fs"),
   xml2js = require("xml2js");
 const { promisify } = require("util");
-
-const settings = require("../settings.js");
 const collections = require("./collections");
-
 const readFileAsync = promisify(fs.readFile);
-const writeFileAsync = promisify(fs.writeFile);
 
-const run = async () => {
-  const res = await readFileAsync("./data.json");
-  console.log(res);
-};
-
+/**
+ * Parse the XML file to an array of element path and attributes
+ * as indicated by sourceFilePath
+ * @param {*} sourceFilePath
+ */
 async function parseXml(sourceFilePath) {
   const parser = new xml2js.Parser();
-  const sourceFile = settings.root + path.sep + sourceFilePath;
-
-  const data = await readFileAsync(sourceFile);
+  const data = await readFileAsync(sourceFilePath);
   let res = {};
 
-  parser.parseString(data, function(err, result) {
-    const root = Object.keys(result);
-    let rootElement = result[root];
-    let allTags = findAllTags(rootElement, [root]);
-    res.result = collections.setToSortedArray(allTags);
+  parser.parseString(data, (err, result) => {
+    if (result != null) {
+      const root = Object.keys(result);
+      let rootElement = result[root];
+      let allTags = findAllTags(rootElement, [root]);
+      res = collections.setToSortedArray(allTags);
+    }
   });
 
   return res;
 }
 
-function findAllTags(objs, elementPath = new Array()) {
+/**
+ * Recursively parse the objects and find the element path
+ * and attributes
+ * @param {*} objects
+ * @param {*} elementPath
+ */
+function findAllTags(objects, elementPath = new Array()) {
   let tags = new Set();
   let arr = new Array();
 
-  // convert to a path separted by "/"
+  // convert to a path separated by "/"
   const path = elementPath.join("/");
 
-  if (!Array.isArray(objs)) {
-    arr.push(objs);
+  if (!Array.isArray(objects)) {
+    arr.push(objects);
   } else {
-    arr = objs;
+    arr = objects;
   }
 
   arr.forEach(obj => {
@@ -70,6 +71,7 @@ function findAllTags(objs, elementPath = new Array()) {
       }
     });
   });
+
   return tags;
 }
 
