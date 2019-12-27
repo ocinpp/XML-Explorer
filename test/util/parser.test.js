@@ -2,7 +2,7 @@ const parser = require("../../util/parser");
 const path = require("path");
 
 describe("parser", () => {
-  test("parseXml returns correct result", async () => {
+  test("parseXml returns correct result for XML file", async () => {
     const result = await parser.parseXml(__dirname + path.sep + "test.xml");
     const expected = [
       "note/body",
@@ -12,5 +12,10 @@ describe("parser", () => {
       "note/to"
     ];
     expect(result).toStrictEqual(expected);
+  });
+
+  test("parseXml returns null for test file", async () => {
+    const result = await parser.parseXml(__dirname + path.sep + "test.txt");
+    expect(result).toBeNull();
   });
 });
