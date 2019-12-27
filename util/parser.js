@@ -12,7 +12,7 @@ const readFileAsync = promisify(fs.readFile);
 async function parseXml(sourceFilePath) {
   const parser = new xml2js.Parser();
   const data = await readFileAsync(sourceFilePath);
-  let res = {};
+  let res = null;
 
   parser.parseString(data, (err, result) => {
     if (result != null) {
