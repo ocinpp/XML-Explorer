@@ -3,8 +3,6 @@ function addSets(s1, s2) {
   s2.forEach(e => {
     s1.add(e);
   });
-
-  return s1;
 }
 
 function setToSortedArray(s1) {
