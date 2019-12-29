@@ -16,12 +16,14 @@ app.post("/parse", upload.single("sourcefile"), async function(req, res, next) {
   // req.file is the `source` file
   // req.body will hold the text fields, if there were any
   console.log(req.file);
-  let result = "";
+
+  let result = null;
   try {
     result = await parser.parseXml(__dirname + path.sep + req.file.path);
   } catch (err) {
     next(err);
   } finally {
+    // delete the uploaded file
     fs.unlink(req.file.path, err => {
       if (err) throw err;
       console.log("File was deleted");
