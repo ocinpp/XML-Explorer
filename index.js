@@ -12,7 +12,7 @@ app.use(helmet());
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 
-app.post("/parse", upload.single("sourcefile"), async function(req, res, next) {
+app.post("/parse", upload.single("sourcefile"), async (req, res, next) => {
   // req.file is the `source` file
   // req.body will hold the text fields, if there were any
   console.log(req.file);
@@ -29,7 +29,7 @@ app.post("/parse", upload.single("sourcefile"), async function(req, res, next) {
       console.log("File was deleted");
     });
   }
-  res.send({ result: result });
+  res.send(JSON.stringify({ result: result }));
 });
 
 const server = app.listen(port, () =>
