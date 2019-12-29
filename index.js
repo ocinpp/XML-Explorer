@@ -29,7 +29,7 @@ app.post("/parse", upload.single("sourcefile"), async (req, res, next) => {
       console.log("File was deleted");
     });
   }
-  res.send(JSON.stringify({ result: result }));
+  res.send({ result: result });
 });
 
 const server = app.listen(port, () =>
