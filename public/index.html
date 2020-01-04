@@ -5,20 +5,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
     <title>XML Attribute Parser</title>
   </head>
   <body>
-    <h1>XML Attribute Parser</h1>
-    <div>
-      <form>
-        <input type="file" name="sourcefile" id="sourcefile" />
-        <button type="button" id="submitBtn">Submit</button>
-      </form>
-    </div>
-    <br />
-    <div style="max-width:80vw">
-      <textarea style="width:100%" rows="30" id="parseResult"> </textarea>
-    </div>
+    <section class="hero is-info is-bold">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">
+            XML Attribute Parser
+          </h1>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <article class="message is-link">
+        <div class="message-body">
+          Choose a XML file to see its elements and attributes
+        </div>
+      </article>
+      <div class="content">
+        <form>
+          <div class="field is-grouped">
+            <p
+              class="control is-expanded file has-name"
+              id="xmlFile"
+              style="overflow: hidden;"
+            >
+              <label class="file-label">
+                <input
+                  class="file-input"
+                  type="file"
+                  name="sourcefile"
+                  id="sourcefile"
+                />
+                <span class="file-cta">
+                  <span class="file-label">
+                    Choose a file…
+                  </span>
+                </span>
+                <span class="file-name">
+                  No file uploaded
+                </span>
+              </label>
+            </p>
+          </div>
+          <div class="control">
+            <button type="button" id="submitBtn" class="button is-info">
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="content" style="max-width:100vw; height:50vh;">
+        <textarea
+          class="textarea"
+          style="width:100%; height:100%;"
+          rows="5"
+          id="parseResult"
+        >
+        </textarea>
+      </div>
+    </section>
   </body>
   <script>
     function submitForm() {
@@ -38,10 +90,12 @@
         .then(function(response) {
           console.log(response.data.result);
           let result = "";
-          response.data.result.forEach(i => {
-            result += i;
-            result += "\n";
-          });
+          if (response.data.result != null) {
+            response.data.result.forEach(i => {
+              result += i;
+              result += "\n";
+            });
+          }
           document.querySelector("#parseResult").innerHTML = result;
         })
         .catch(function(error) {
@@ -53,5 +107,23 @@
     }
 
     document.querySelector("#submitBtn").addEventListener("click", submitForm);
+    document.addEventListener("DOMContentLoaded", () => {
+      (document.querySelectorAll(".notification .delete") || []).forEach(
+        $delete => {
+          $notification = $delete.parentNode;
+          $delete.addEventListener("click", () => {
+            $notification.parentNode.removeChild($notification);
+          });
+        }
+      );
+    });
+
+    const fileInput = document.querySelector("#xmlFile input[type=file]");
+    fileInput.onchange = () => {
+      if (fileInput.files.length > 0) {
+        const fileName = document.querySelector("#xmlFile .file-name");
+        fileName.textContent = fileInput.files[0].name;
+      }
+    };
   </script>
 </html>
