@@ -4,7 +4,8 @@
   "description": "Exploring the attributes in XML file",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -14,6 +15,7 @@
   "license": "MIT",
   "devDependencies": {
     "eslint": "^6.5.1",
+    "nodemon": "^2.0.2",
     "prettier": "^1.18.2"
   },
   "dependencies": {
