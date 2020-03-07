@@ -7,10 +7,6 @@
     "test": "jest",
     "start": "nodemon index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "xml-explorer"
-  },
   "author": "",
   "license": "MIT",
   "devDependencies": {
