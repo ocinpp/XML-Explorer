@@ -3,10 +3,6 @@
   "version": "1.0.0",
   "description": "Exploring the attributes in XML file",
   "main": "index.js",
-  "scripts": {
-    "test": "jest",
-    "start": "nodemon index.js"
-  },
   "author": "",
   "license": "MIT",
   "devDependencies": {
