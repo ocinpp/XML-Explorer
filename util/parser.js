@@ -9,7 +9,7 @@ const readFileAsync = promisify(fs.readFile);
  * as indicated by sourceFilePath
  * @param {*} sourceFilePath
  */
-async function parseXml(sourceFilePath) {
+async function parseXmlFile(sourceFilePath) {
   const parser = new xml2js.Parser();
   const data = await readFileAsync(sourceFilePath);
   let res = null;
@@ -75,4 +75,4 @@ function findAllTags(objects, elementPath = new Array()) {
   return tags;
 }
 
-module.exports.parseXml = parseXml;
+module.exports.parseXmlFile = parseXmlFile;
