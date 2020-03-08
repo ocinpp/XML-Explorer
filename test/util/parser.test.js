@@ -14,8 +14,25 @@ describe("parser", () => {
     expect(result).toStrictEqual(expected);
   });
 
-  test("parseXml returns null for test file", async () => {
+  test("parseXml returns null for text file", async () => {
     const result = await parser.parseXmlFile(__dirname + path.sep + "test.txt");
     expect(result).toBeNull();
+  });
+
+  test("parseXml returns null for empty file", async () => {
+    const result = await parser.parseXmlFile(
+      __dirname + path.sep + "empty.xml"
+    );
+    expect(result).toBeNull();
+  });
+
+  test("parseXml throws exception for non-existent file", async () => {
+    try {
+      const result = await parser.parseXmlFile(
+        __dirname + path.sep + "no-such-file.xml"
+      );
+    } catch (e) {
+      expect(e).not.toBeNull();
+    }
   });
 });
