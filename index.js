@@ -19,7 +19,7 @@ app.post("/parse", upload.single("sourcefile"), async (req, res, next) => {
 
   let result = null;
   try {
-    result = await parser.parseXml(__dirname + path.sep + req.file.path);
+    result = await parser.parseXmlFile(req.file.path);
   } catch (err) {
     next(err);
   } finally {
