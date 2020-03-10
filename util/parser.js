@@ -17,8 +17,8 @@ async function parseXmlFile(sourceFilePath) {
   parser.parseString(data, (err, result) => {
     if (result != null) {
       const root = Object.keys(result);
-      let rootElement = result[root];
-      let allTags = findAllTags(rootElement, [root]);
+      const rootElement = result[root];
+      const allTags = findAllTags(rootElement, [root]);
       res = collections.setToSortedArray(allTags);
     }
   });
@@ -46,6 +46,7 @@ function findAllTags(objects, elementPath = new Array()) {
   }
 
   arr.forEach(obj => {
+    // get the names of the properties of obj
     keys = Object.keys(obj);
     keys.forEach(key => {
       if (key !== "$" && key !== "_") {
