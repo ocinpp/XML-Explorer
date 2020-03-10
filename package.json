@@ -4,8 +4,15 @@
   "description": "Exploring the attributes in XML file",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage",
     "start": "nodemon index.js"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "coverageReporters": [
+      "json",
+      "html"
+    ]
   },
   "author": "",
   "license": "MIT",
