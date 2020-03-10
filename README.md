@@ -1,5 +1,7 @@
 # XML-Explorer
 
+[![Known Vulnerabilities](https://snyk.io/test/github/ocinpp/XML-Explorer/badge.svg?targetFile=package.json)](https://snyk.io/test/github/ocinpp/XML-Explorer?targetFile=package.json)
+
 ## Description
 
 Extract the elements and attributes of XML file
