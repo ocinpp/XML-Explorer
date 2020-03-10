@@ -2,6 +2,13 @@
 <note>
   <to>Tove</to>
   <from>Jani</from>
-  <heading style="text">Reminder</heading>
+  <heading style="text" size="normal">Reminder</heading>
   <body>Don't forget me this weekend!</body>
+  <related>
+    <item count="3">
+      <id>1</id>
+      <id location="first">2</id>
+      <id>3</id>
+    </item>
+  </related>
 </note>

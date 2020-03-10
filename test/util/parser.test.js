@@ -8,7 +8,13 @@ describe("parser", () => {
       "note/body",
       "note/from",
       "note/heading",
+      "note/heading/@/size",
       "note/heading/@/style",
+      "note/related",
+      "note/related/item",
+      "note/related/item/@/count",
+      "note/related/item/id",
+      "note/related/item/id/@/location",
       "note/to"
     ];
     expect(result).toStrictEqual(expected);
