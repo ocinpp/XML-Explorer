@@ -12,7 +12,7 @@
     "coverageReporters": [
       "json",
       "html",
-      "text-lcov"
+      "lcov"
     ]
   },
   "author": "",
