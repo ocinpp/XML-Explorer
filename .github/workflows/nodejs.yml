@@ -25,6 +25,8 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Coveralls GitHub Action
         uses: coverallsapp/github-action@v1.0.1
+        with:
+          github-token: ${{ secrets.github_token }}
       - run: npm ci
       - run: npm run build --if-present
       - run: npm test
