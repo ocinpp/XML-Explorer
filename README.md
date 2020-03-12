@@ -2,9 +2,6 @@
 
 [![Known Vulnerabilities](https://snyk.io/test/github/ocinpp/XML-Explorer/badge.svg?targetFile=package.json)](https://snyk.io/test/github/ocinpp/XML-Explorer?targetFile=package.json)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Focinpp%2FXML-Explorer.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Focinpp%2FXML-Explorer?ref=badge_shield)
-
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Focinpp%2FXML-Explorer.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Focinpp%2FXML-Explorer?ref=badge_shield)
-
 [![Coverage Status](https://coveralls.io/repos/github/ocinpp/XML-Explorer/badge.svg?branch=master)](https://coveralls.io/github/ocinpp/XML-Explorer?branch=master)
 
 ## Description
