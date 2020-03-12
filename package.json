@@ -11,7 +11,8 @@
     "collectCoverage": true,
     "coverageReporters": [
       "json",
-      "html"
+      "html",
+      "text-lcov"
     ]
   },
   "author": "",
