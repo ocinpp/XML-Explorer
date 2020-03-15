@@ -1,7 +1,7 @@
 const parser = require("../../util/parser");
 const path = require("path");
 
-describe("parser", () => {
+describe("Test parseXml with different files", () => {
   test("parseXml returns correct result for XML file", async () => {
     const result = await parser.parseXmlFile(__dirname + path.sep + "test.xml");
     const expected = [
