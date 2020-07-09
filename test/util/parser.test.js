@@ -10,12 +10,14 @@ describe("Test parseXml with different files", () => {
       "note/heading",
       "note/heading/@/size",
       "note/heading/@/style",
+      "note/langs",
+      "note/langs/lang",
       "note/related",
       "note/related/item",
       "note/related/item/@/count",
       "note/related/item/id",
       "note/related/item/id/@/location",
-      "note/to"
+      "note/to",
     ];
     expect(result).toStrictEqual(expected);
   });
